@@ -3,7 +3,7 @@ name: Deploy-POI
 on:  
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: './dockerfiles/Dockerfile_3'
+  DOCKERFILE_PATH: './dockerfiles'
   DOCKER_IMAGE_NAME: 'poi'
 
 
@@ -30,4 +30,4 @@ jobs:
       with:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
-        file: ./Dockerfile
+        file: ./dockerfiles/Dockerfile_3
