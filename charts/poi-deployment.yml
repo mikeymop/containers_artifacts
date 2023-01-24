@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi-deployment
+  template:
+    metadata:
+      labels:
+        app: poi-deployment
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: poi-deployment
+        image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        env:
+        - name: PORT
+          value: '31905'
+        - name: CONFIG_FILES_PATH
+          value: 'sercrets-store-placeholder'
+        - name: SQL_USER	
+          value: "sqladminiDq6940"
+        - name: SQL_PASSWORD
+          value: "yes"
+        - name: SQL_SERVER
+          value: 'sqlserveridq6940.database.windows.net:1433'
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: CREDENTIAL_METHOD
+          value: "yes"
+        - name: IDENTITY_CLIENT_ID
+          value: "yes"
+        - name: OPENAPI_DOCS_URI
+          value: "yes"
+        - name: DEBUG_LOGGING
+          value: "yes"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          name: openhack-poi-application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poi-service
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app: poi-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openhack-poi-ingress
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: openhack-poi-application
