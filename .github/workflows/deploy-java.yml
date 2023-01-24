@@ -3,7 +3,7 @@ name: Deploy-Java
 on:
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: ''
+  DOCKERFILE_PATH: './dockerfiles/'
   DOCKER_IMAGE_NAME: 'POI'
 
 jobs:
@@ -29,5 +29,6 @@ jobs:
       with:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
-        file: ./Dockerfile
+        file: ./dockerfiles/Dockerfile_0
+        context: ./src/user-java
   
