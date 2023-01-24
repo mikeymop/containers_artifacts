@@ -3,7 +3,7 @@ name: Deploy-trips
 on:
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: '/dockerfiles/Dockerfile_4'
+  DOCKERFILE_PATH: '/dockerfiles'
   DOCKER_IMAGE_NAME: 'Trips'
 
 jobs:
@@ -29,5 +29,5 @@ jobs:
       with:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
-        file: ./Dockerfile
+        file: ./Dockerfile/Dockerfile_4
   
