@@ -25,7 +25,7 @@ spec:
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
-          value: "yes"
+          value: "Password123!"
         - name: SQL_SERVER
           value: 'sqlserveridq6940.database.windows.net:1433'
         - name: SQL_DBNAME
