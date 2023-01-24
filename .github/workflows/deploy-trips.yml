@@ -29,5 +29,5 @@ jobs:
       with:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
-        file: ./Dockerfile/Dockerfile_4
+        file: ./dockerfiles/Dockerfile_4
   
