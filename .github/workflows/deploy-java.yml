@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 env:
   DOCKERFILE_PATH: './dockerfiles/'
-  DOCKER_IMAGE_NAME: 'POI'
+  DOCKER_IMAGE_NAME: 'user-java'
 
 jobs:
   build:
