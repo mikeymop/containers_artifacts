@@ -3,8 +3,8 @@ name: Deploy-userprofile
 on:
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: ''
-  DOCKER_IMAGE_NAME: 'POI'
+  DOCKERFILE_PATH: './dockerfiles/'
+  DOCKER_IMAGE_NAME: 'userprofile'
 
 jobs:
   build:
@@ -29,5 +29,6 @@ jobs:
       with:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
-        file: ./Dockerfile
+        file: ./Dockerfile/Dockerfile_2
+        context: ./src/userprofile
   
