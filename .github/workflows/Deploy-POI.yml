@@ -1,11 +1,10 @@
-name: Deploy-POI
+name: deploy-openhack-poi
 
-on:  
+on:
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: './dockerfiles'
-  DOCKER_IMAGE_NAME: 'poi'
-
+  DOCKERFILE_PATH: './dockerfiles/Dockerfile_3'
+  DOCKER_IMAGE_NAME: 'openhack-poi'
 
 jobs:
   build:
@@ -23,7 +22,7 @@ jobs:
       with:
         registry: https://registryidq6940.azurecr.io/
         username: 'registryidq6940'
-        password: 'OpOimuG4qYVoeWAnJvqn19iTghCBPR6ElPEhc4VR6d+ACRDkuTzC'
+        password: 'FD9LWDTIsZTt9e+nioJmRt+71pcx1YxMFpu0Hp4TVE+ACRDV1p+X'
     
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
@@ -31,3 +30,4 @@ jobs:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
         file: ./dockerfiles/Dockerfile_3
+        context: ./src/poi
