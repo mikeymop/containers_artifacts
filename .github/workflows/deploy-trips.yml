@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 env:
   DOCKERFILE_PATH: '/dockerfiles'
-  DOCKER_IMAGE_NAME: 'Trips'
+  DOCKER_IMAGE_NAME: 'trips'
 
 jobs:
   build:
