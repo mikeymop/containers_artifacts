@@ -10,6 +10,7 @@ env:
   DOCKERFILE_PATH: ''
   DOCKER_IMAGE_NAME: 'poi'
 
+
 jobs:
   build:
     runs-on: 'ubuntu-latest'
