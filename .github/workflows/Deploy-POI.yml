@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 env:
   DOCKERFILE_PATH: ''
-  DOCKER_IMAGE_NAME: 'POI'
+  DOCKER_IMAGE_NAME: 'poi'
 
 jobs:
   build:
@@ -34,4 +34,3 @@ jobs:
         push: true
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
         file: ./Dockerfile
-  
