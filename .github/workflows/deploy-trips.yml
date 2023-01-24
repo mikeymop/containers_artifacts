@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: ''
-  DOCKER_IMAGE_NAME: 'POI'
+  DOCKERFILE_PATH: '/dockerfiles/Dockerfile_4'
+  DOCKER_IMAGE_NAME: 'Trips'
 
 jobs:
   build:
