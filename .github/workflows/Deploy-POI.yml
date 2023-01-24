@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: ''
+  DOCKERFILE_PATH: './dockerfiles/Dockerfile_3'
   DOCKER_IMAGE_NAME: 'POI'
 
 jobs:
