@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Deploy-POI
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-  DOCKERFILE_PATH: './container-api'
-  DOCKER_IMAGE_NAME: 'testy'
+  DOCKERFILE_PATH: ''
+  DOCKER_IMAGE_NAME: 'POI'
 
 jobs:
   build:
