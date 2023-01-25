@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-back
+  template:
+    metadata:
+      labels:
+        app: java-back
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: java-back
+        image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        env:
+        - name: PORT
+          value: '8080'
+        - name: SQL_USER	
+          value: "sqladminiDq6940"
+        - name: SQL_PASSWORD
+          value: "Password123!"
+        - name: SQL_SERVER
+          value: 'sqlserveridq6940.database.windows.net:1433'
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: CREDENTIAL_METHOD
+          value: "yes"
+        - name: IDENTITY_CLIENT_ID
+          value: "yes"
+        - name: OPENAPI_DOCS_URI
+          value: "yes"
+        - name: DEBUG_LOGGING
+          value: "yes"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080 # set container to listn on port 8080
+          name: java-back
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-back-ingress
+spec:
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8080 # map ingress port 8080 to container port 8080
+      targetPort: 8080
+  selector:
+    app: java-back
