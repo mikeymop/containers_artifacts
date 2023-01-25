@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-back
+  name: poi-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-back
+      app: poi-app
   template:
     metadata:
       labels:
-        app: java-back
+        app: poi-app
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: java-back
-        image: registryidq6940.azurecr.io/user-java:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+      - name: poi-app
+        image: registryidq6940.azurecr.io/userprofile:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
         - name: PORT
-          value: '1433'
+          valeu: '1433'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
@@ -41,21 +41,21 @@ spec:
             cpu: 100m
             memory: 128Mi
           limits:
-            cpu: 500m
-            memory: 512Mi
+            cpu: 250m
+            memory: 256Mi
         ports:
-        - containerPort: 8080 # set container to listn on port 8080
-          name: java-back
+        - containerPort: 8080
+          name: poi-app
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-back-ingress
+  name: openhack-poi-ingress
 spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 8080 # map ingress port 8080 to container port 8080
+      port: 8080
       targetPort: 8080
   selector:
-    app: java-back
+    app: poi-app

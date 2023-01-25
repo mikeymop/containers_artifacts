@@ -18,6 +18,8 @@ spec:
       - name: poi-app
         image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
+        - name: PORT
+          value: '1433'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
