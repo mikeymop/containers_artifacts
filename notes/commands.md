@@ -4,7 +4,7 @@
 
 Gets kube creds from AZ portal
 ```
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group teamResources --name testAKSCluster
 ```
 
 Connect Kubernetes instance to the AKS container registry
