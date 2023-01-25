@@ -18,8 +18,6 @@ spec:
       - name: trips-back
         image: registryidq6940.azurecr.io/trips:latest
         env:
-          - name: PORT
-            value: '80'
           - name: SQL_USER	
             value: "sqladminiDq6940"
           - name: SQL_PASSWORD
