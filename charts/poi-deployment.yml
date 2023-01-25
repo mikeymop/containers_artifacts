@@ -18,10 +18,6 @@ spec:
       - name: poi-app
         image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
-        - name: PORT
-          value: '31905'
-        # - name: CONFIG_FILES_PATH
-        #   value: 'sercrets-store-placeholder'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
@@ -52,22 +48,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: poi-service
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: poi-service
----
-apiVersion: v1
-kind: Service
-metadata:
   name: openhack-poi-ingress
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 6379
+      targetPort: 80
   selector:
     app: poi-app
