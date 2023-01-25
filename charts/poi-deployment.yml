@@ -20,8 +20,8 @@ spec:
         env:
         - name: PORT
           value: '31905'
-        - name: CONFIG_FILES_PATH
-          value: 'sercrets-store-placeholder'
+        # - name: CONFIG_FILES_PATH
+        #   value: 'sercrets-store-placeholder'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
@@ -47,7 +47,7 @@ spec:
             memory: 256Mi
         ports:
         - containerPort: 80
-          name: openhack-poi-application
+          name: poi-app
 ---
 apiVersion: v1
 kind: Service
