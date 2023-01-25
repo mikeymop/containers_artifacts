@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trips-viewer-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trips-viewer-front
+  template:
+    metadata:
+      labels:
+        app: trips-viewer-front
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: trips-viewer-front
+        image: registryidq6940.azurecr.io/tripviewer:latest
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trips-viewer-front
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: trips-viewer-front
