@@ -1,4 +1,4 @@
-name: deploy-openhack-poi
+name: poi-helm-deploy
 
 on:
   workflow_dispatch:
