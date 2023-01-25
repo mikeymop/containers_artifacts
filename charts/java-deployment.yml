@@ -18,24 +18,14 @@ spec:
       - name: java-back
         image: registryidq6940.azurecr.io/user-java:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
-        - name: PORT
-          value: '1433'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
           value: "Password123!"
         - name: SQL_SERVER
-          value: 'sqlserveridq6940.database.windows.net:1433'
+          value: 'sqlserveridq6940.database.windows.net'
         - name: SQL_DBNAME
           value: "mydrivingDB"
-        - name: CREDENTIAL_METHOD
-          value: "yes"
-        - name: IDENTITY_CLIENT_ID
-          value: "yes"
-        - name: OPENAPI_DOCS_URI
-          value: "yes"
-        - name: DEBUG_LOGGING
-          value: "yes"
         resources:
           requests:
             cpu: 100m
@@ -44,7 +34,7 @@ spec:
             cpu: 500m
             memory: 512Mi
         ports:
-        - containerPort: 8080 # set container to listn on port 8080
+        - containerPort: 80 # set container to listn on port 8080
           name: java-back
 ---
 apiVersion: v1
@@ -55,7 +45,6 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 8080 # map ingress port 8080 to container port 8080
-      targetPort: 8080
+      port: 80 # map ingress port 80 to container port 80
   selector:
     app: java-back

@@ -18,14 +18,12 @@ spec:
       - name: userprofile-app
         image: registryidq6940.azurecr.io/userprofile:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
-        - name: PORT
-          value: '1433'
         - name: SQL_USER	
           value: "sqladminiDq6940"
         - name: SQL_PASSWORD
           value: "Password123!"
         - name: SQL_SERVER
-          value: 'tcp:sqlserveridq6940.database.windows.net'
+          value: 'sqlserveridq6940.database.windows.net'
         - name: SQL_DBNAME
           value: "mydrivingDB"
         resources:
@@ -36,7 +34,7 @@ spec:
             cpu: 250m
             memory: 256Mi
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: userprofile-app
 ---
 apiVersion: v1
@@ -46,13 +44,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: api
-      protocol: TCP
-      port: 8080
-      targetPort: 8080
-    - name: db
-      protocol: TCP
-      port: 1433
-      targetPort: 1433
+    - protocol: TCP
+      port: 80
   selector:
     app: userprofile-app
