@@ -61,7 +61,6 @@ jobs:
             --atomic \
             --wait \
             --namespace openhack \
-            contoso-website \
-            ./kubernetes/contoso-website \
+            ./kubernetes/openhack \
             --set image.repository=${{ secrets.ACR_NAME }} \
             --set dns.name=10.244.0.10:53
