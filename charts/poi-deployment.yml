@@ -6,16 +6,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: poi-deployment
+      app: poi-app
   template:
     metadata:
       labels:
-        app: poi-deployment
+        app: poi-app
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: poi-deployment
+      - name: poi-app
         image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
         - name: PORT
