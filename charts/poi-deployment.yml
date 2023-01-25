@@ -25,7 +25,7 @@ spec:
         - name: SQL_PASSWORD
           value: "Password123!"
         - name: SQL_SERVER
-          value: 'sqlserveridq6940.database.windows.net:1433'
+          value: 'sqlserveridq6940.database.windows.net'
         - name: SQL_DBNAME
           value: "mydrivingDB"
         - name: CREDENTIAL_METHOD

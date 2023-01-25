@@ -18,8 +18,12 @@ spec:
       - name: trips-viewer-front
         image: registryidq6940.azurecr.io/tripviewer:latest
         env:
-        - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
+        - name: USERPROFILE_API_ENDPOINT
+          value: "http://userprofile.default.svc.cluster.local"
+        - name: TRIPS_API_ENDPOINT
+          value: "http://trips.default.svc.cluster.local"
+        - name: BING_MAPS_KEY
+          value: ""
         resources:
           requests:
             cpu: 100m
@@ -35,6 +39,7 @@ kind: Service
 metadata:
   name: trips-viewer-front
 spec:
+  type: LoadBalancer
   ports:
   - port: 80
   selector:
