@@ -31,29 +31,34 @@ jobs:
         tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
         file: ./dockerfiles/Dockerfile_3
         context: ./src/poi
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build_push_image
 
-    - name: Deploy application via helm chart
-      uses: Azure/setup-helm@v1
-      with:
-        version: v3.3.1
-    - name: Azure Kubernetes set context
-      uses: Azure/aks-set-context@v1
-      with:
-        # Azure credentials, i.e., output of `az ad sp create-for-rbac --scopes /subscriptions/<SUBSCRIPTION-ID> --role Contributor --sdk-auth`
-        creds: ${{ secrets.AZ_CREDS }}
-        # Resource group name
-        resource-group: teamResources
-        # AKS cluster name
-        cluster-name: testAKSCluster
-    - name: Run Helm Deploy
-      run: |
-        helm upgrade \
-        --install \
-        --create-namespace \
-        --atomic \
-        --wait \
-        --namespace staging \
-        contoso-website \
-        ./kubernetes/contoso-website \
-        --set image.repository=${{ secrets.ACR_NAME }} \
-        --set dns.name=10.244.0.10:53
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: Azure/setup-helm@v1
+        with:
+          version: v3.3.1
+      - name: Azure Kubernetes set context
+        uses: Azure/aks-set-context@v1
+        with:
+          # Azure credentials, i.e., output of `az ad sp create-for-rbac --scopes /subscriptions/<SUBSCRIPTION-ID> --role Contributor --sdk-auth`
+          creds: ${{ secrets.AZ_CREDS }}
+          # Resource group name
+          resource-group: teamResources
+          # AKS cluster name
+          cluster-name: testAKSCluster
+      - name: Run Helm Deploy
+        run: |
+          helm upgrade \
+          --install \
+          --create-namespace \
+          --atomic \
+          --wait \
+          --namespace staging \
+          contoso-website \
+          ./kubernetes/contoso-website \
+          --set image.repository=${{ secrets.ACR_NAME }} \
+          --set dns.name=10.244.0.10:53
