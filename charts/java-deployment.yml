@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: java-back
-        image: registryidq6940.azurecr.io/openhack-poi:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        image: registryidq6940.azurecr.io/user-java:latest # image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
         env:
         - name: PORT
           value: '8080'
