@@ -13,7 +13,7 @@ spec:
         app: trips
     spec:
       containers: # Here we define all containers
-        - image: registryidq6940.azurecr.io/trips:latest
+        - image: registryngv7580.azurecr.io/trips:latest
           name: trips
           resources:
             requests: # Minimum amount of resources requested

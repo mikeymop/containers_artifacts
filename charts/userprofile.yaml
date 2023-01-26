@@ -13,7 +13,7 @@ spec:
         app: userprofile
     spec:
       containers: # Here we define all containers
-        - image: registryidq6940.azurecr.io/userprofile:latest
+        - image: registryngv7580.azurecr.io/userprofile:latest
           name: userprofile
           resources:
             requests: # Minimum amount of resources requested
