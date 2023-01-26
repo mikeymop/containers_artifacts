@@ -13,7 +13,7 @@ spec:
         app: poi
     spec:
       containers: # Here we define all containers
-        - image: registryidq6940.azurecr.io/openhack-poi:latest
+        - image: registryngv7580.azurecr.io/poi:latest
           name: poi
           resources:
             requests: # Minimum amount of resources requested

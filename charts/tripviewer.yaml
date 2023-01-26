@@ -13,7 +13,7 @@ spec:
         app: tripviewer
     spec:
       containers: # Here we define all containers
-        - image: registryidq6940.azurecr.io/tripviewer:latest
+        - image: registryngv7580.azurecr.io/tripviewer:latest
           imagePullPolicy: Always
           name: tripviewer
           resources:

@@ -13,7 +13,7 @@ spec:
         app: trips
     spec:
       containers: # Here we define all containers
-        - image: registryidq6940.azurecr.io/trips:latest
+        - image: registryngv7580.azurecr.io/trips:latest
           name: trips
           resources:
             requests: # Minimum amount of resources requested
@@ -25,9 +25,9 @@ spec:
           ports:
             - containerPort: 80 # This container exposes port 80
               name: http # We named that port "http" so we can refer to it later
-          envFrom:
-          - secretRef:
-              name: db-credentials
+#           envFrom:
+#           - secretRef:
+#               name: db-credentials
           env:
           - name: PORT
             value: '80'
