@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 env:
   DOCKERFILE_PATH: './dockerfiles/Dockerfile_3'
-  DOCKER_IMAGE_NAME: 'openhack-poi'
+  DOCKER_IMAGE_NAME: 'poi'
 
 jobs:
   build:
