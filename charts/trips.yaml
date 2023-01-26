@@ -25,9 +25,9 @@ spec:
           ports:
             - containerPort: 80 # This container exposes port 80
               name: http # We named that port "http" so we can refer to it later
-          envFrom:
-          - secretRef:
-              name: db-credentials
+#           envFrom:
+#           - secretRef:
+#               name: db-credentials
           env:
           - name: PORT
             value: '80'
