@@ -28,6 +28,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: registryidq6940.azurecr.io/${{env.DOCKER_IMAGE_NAME}}:latest
+        tags: ${{ secrets.ACR_LOGIN }}/${{env.DOCKER_IMAGE_NAME}}:latest
         file: ./dockerfiles/Dockerfile_3
         context: ./src/poi
